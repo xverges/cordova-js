@@ -35,12 +35,16 @@ describe('iOS exec', function () {
         failSpy.reset();
         mockxhr.install();
         exec.setJsToNativeBridgeMode(exec.jsToNativeModes.XHR_NO_PAYLOAD);
+        /* jshint -W020 */ // Read Only
         navigator = { userAgent: 'hi there (' + VC_ADDR + ')' };
+        /* jshint +W020 */
     });
 
     afterEach(function() {
         expect(mockxhr.activeXhrs.length).toBe(0);
+        /* jshint -W051 */ // Variable should not be deleted
         delete navigator;
+        /* jshint +W051 */
     });
 
     afterEach(mockxhr.uninstall);
@@ -49,9 +53,11 @@ describe('iOS exec', function () {
         expect(mockxhr.activeXhrs.length).toBeGreaterThan(0, 'expected an XHR to have been sent.');
         var mockXhr = mockxhr.activeXhrs[0];
         expect(mockXhr.url).toMatch(/^\/!gap_exec\\?/);
+        /* jshint -W069 */ // ['xx'] is better written in dot notation
         expect(mockXhr.requestHeaders['vc']).toBe(VC_ADDR, 'missing vc header');
         expect(mockXhr.requestHeaders['rc']).toBeDefined('missing rc header.');
         expect(mockXhr.requestHeaders['cmds']).not.toBeDefined();
+        /* jshint +W069 */
         expect(mockXhr.requestPayload).toBe(null);
         mockXhr.simulateResponse(200, '');
     }

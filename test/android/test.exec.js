@@ -163,7 +163,7 @@ describe('exec.processMessages', function () {
             var messages = message1 + '*';
             exec.processMessages(messages);
             expect(callbackSpy).toHaveBeenCalledWith('id', false, 3, ['foo'], false);
-            waitsFor(function() { return nativeApi.retrieveJsMessages.wasCalled }, 500);
+            waitsFor(function() { return nativeApi.retrieveJsMessages.wasCalled; }, 500);
             runs(function() {
                 expect(callbackSpy).toHaveBeenCalledWith('id', true, 1, [false], true);
             });

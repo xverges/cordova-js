@@ -51,15 +51,15 @@ describe("builder", function () {
 
         var target = {},
             objects = {
-               homer: {
-                   children: {
-                       bart: {},
-                       lisa: {},
-                       maggie: {
-                           path: "cordova/builder"
-                       }
-                   }
-               }
+                homer: {
+                    children: {
+                        bart: {},
+                        lisa: {},
+                        maggie: {
+                            path: "cordova/builder"
+                        }
+                    }
+                }
             };
 
         builder.buildIntoButDoNotClobber(objects, target);

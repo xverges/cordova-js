@@ -34,7 +34,7 @@ describe('modulemapper', function() {
             obj: { str: 'hello', num: 8, subObj: {num: 9} },
             TestClass: TestClass
         };
-        utils.defineGetter(context, 'getme', function() { return 'getter' });
+        utils.defineGetter(context, 'getme', function() { return 'getter';});
     });
 
     afterEach(function() {
